@@ -1,0 +1,5 @@
+{
+  "projects": {
+    "default": "test-ts-nextjs-firebase"
+  }
+}
