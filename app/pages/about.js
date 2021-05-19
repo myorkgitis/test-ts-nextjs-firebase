@@ -2,71 +2,81 @@ import Head from "next/head";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
+/**
+ *
+ * @return {Promise<{props: {data: string}}>}
+ */
 export async function getStaticProps() {
-	return {
-		props: {
-			data: "Data from some external API fetched at build-time",
-		},
-	};
+  return {
+    props: {
+      data: "Data from some external API fetched at build-time",
+    },
+  };
 }
 
+/**
+ *
+ * @param {any} data
+ * @return {JSX.Element}
+ * @constructor
+ */
 function About({ data }) {
-	return (
-		<div className="container">
-			<Head>
-				<title>Next.js SSG on Firebase Hosting</title>
-				<link rel="icon" href="/favicon.ico" />
-			</Head>
+  return (
+    <div className="container">
+      <Head>
+        <title>Next.js SSG on Firebase Hosting</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
 
-			<main>
-				<Header />
-				<h1 className="title">
-					About{" "}
-					<a href="https://nextjs.org" target="_blank">
-						Next.js!
-					</a>
-				</h1>
-				<ul>
-					<li>Static page</li>
-				</ul>
+      <main>
+        <Header />
+        <h1 className="title">
+          About{" "}
+          <a href="https://nextjs.org" target="_blank">
+            Next.js!
+          </a>
+        </h1>
+        <ul>
+          <li>Static page</li>
+        </ul>
 
-				<p className="description">About page.</p>
-				<p className="description">{data}</p>
+        <p className="description">About page.</p>
+        <p className="description">{data}</p>
 
-				<div className="grid">
-					<a href="https://nextjs.org/docs" className="card">
-						<h3>Documentation &rarr;</h3>
-						<p>Find in-depth information about Next.js features and API.</p>
-					</a>
+        <div className="grid">
+          <a href="https://nextjs.org/docs" className="card">
+            <h3>Documentation &rarr;</h3>
+            <p>Find in-depth information about Next.js features and API.</p>
+          </a>
 
-					<a href="https://nextjs.org/learn" className="card">
-						<h3>Learn &rarr;</h3>
-						<p>Learn about Next.js in an interactive course with quizzes!</p>
-					</a>
+          <a href="https://nextjs.org/learn" className="card">
+            <h3>Learn &rarr;</h3>
+            <p>Learn about Next.js in an interactive course with quizzes!</p>
+          </a>
 
-					<a
-						href="https://github.com/zeit/next.js/tree/canary/examples"
-						className="card"
-					>
-						<h3>Examples &rarr;</h3>
-						<p>Discover and deploy boilerplate example Next.js projects.</p>
-					</a>
+          <a
+            href="https://github.com/zeit/next.js/tree/canary/examples"
+            className="card"
+          >
+            <h3>Examples &rarr;</h3>
+            <p>Discover and deploy boilerplate example Next.js projects.</p>
+          </a>
 
-					<a
-						href="https://zeit.co/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-						className="card"
-					>
-						<h3>Deploy &rarr;</h3>
-						<p>
-							Instantly deploy your Next.js site to a public URL with ZEIT Now.
-						</p>
-					</a>
-				</div>
-			</main>
+          <a
+            href="https://zeit.co/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+            className="card"
+          >
+            <h3>Deploy &rarr;</h3>
+            <p>
+              Instantly deploy your Next.js site to a public URL with ZEIT Now.
+            </p>
+          </a>
+        </div>
+      </main>
 
-			<Footer />
+      <Footer />
 
-			<style jsx>{`
+      <style jsx>{`
 				.container {
 					min-height: 100vh;
 					padding: 0 0.5rem;
@@ -174,7 +184,7 @@ function About({ data }) {
 				}
 			`}</style>
 
-			<style jsx global>{`
+      <style jsx global>{`
 				main {
 					max-width: 800px;
 					margin: 20px auto 0px auto;
@@ -192,8 +202,8 @@ function About({ data }) {
 					box-sizing: border-box;
 				}
 			`}</style>
-		</div>
-	);
+    </div>
+  );
 }
 
 export default About;

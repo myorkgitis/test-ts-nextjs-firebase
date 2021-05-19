@@ -6,6 +6,8 @@ import { generatePosts } from "../helpers/utils";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
+import { helloWorldService } from "../src/services/test"
+
 // Only fetchg the title and blurb.
 const FirestoreBlogPostsURL = `https://firestore.googleapis.com/v1/projects/${process.env.FIREBASE_PROJECT_ID}/databases/(default)/documents/posts?mask.fieldPaths=blurb&mask.fieldPaths=title`;
 const fetcher = (url) => fetch(url).then((r) => r.json());
@@ -19,11 +21,13 @@ const fetcher = (url) => fetch(url).then((r) => r.json());
 // with GSP - Cache-Contorl is set to `s-maxage=1, stale-while-revalidate`
 export async function getStaticProps() {
 	return {
-		props: {},
+		props: {
+			"message": helloWorldService()
+		},
 	};
 }
 
-function Home() {
+function Home(props) {
 	const { data, error } = useSWR(FirestoreBlogPostsURL, fetcher);
 	const posts = generatePosts(data);
 
@@ -41,6 +45,8 @@ function Home() {
 					<a href="https://github.com/jthegedus/firebase-gcp-examples">
 						Next.js on Firebase
 					</a>
+					<br />
+					{props.message}
 				</h1>
 
 				<ul>
