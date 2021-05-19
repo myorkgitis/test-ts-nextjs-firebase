@@ -8,11 +8,18 @@
 	"scripts": {
 		"lint": "eslint --ext .js,.ts,.tsx .",
 		"clean": "rimraf nextjs/",
-		"dev": "next dev",
-		"build": "next build",
-		"start": "next start",
+		"next:dev": "next dev",
+		"next:dev:debug": "NODE_OPTIONS='--inspect' NEXT_DEV='1' next dev",
+		"next:build": "next build",
+		"next:start": "next start",
 		"predeploy": "npm run clean && next build",
-		"deploy": "firebase deploy",
+
+		"fb:dev": "tsc -w | firebase emulators:start --inspect-functions --only functions,hosting",
+		"fb:deploy": "firebase deploy",
+		"fb:serve": "npm run build && firebase emulators:start --only functions,hosting",
+		"fb:logs": "firebase functions:log",
+		"fb:env": "(test -f env.json && firebase functions:config:unset env && firebase functions:config:set env=\"$(cat ./env.json)\") || echo \"Please add the file env.json to functions root directory before deploy.\"",
+
 		"build-tsc": "tsc"
 	},
 	"engines": {
